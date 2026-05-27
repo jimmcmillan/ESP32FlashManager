@@ -1,0 +1,49 @@
+{
+  "_readme": "ESP32 Flash Manager — Device Config Template. Edit this file to describe your device and its flash regions, then import it via Settings. Delete the underscore fields before importing — they are documentation only and will be ignored by the parser.",
+
+  "_instructions": {
+    "step_1": "Replace all placeholder values below with your actual device details.",
+    "step_2": "The chip_model must exactly match what esptool reports (visible in the console after Detect Device).",
+    "step_3": "flash_size is in bytes: 4MB=4194304, 8MB=8388608, 16MB=16777216.",
+    "step_4": "Each region address must be a hex string e.g. 0x10000. Size is in bytes.",
+    "step_5": "Valid operations are: read, write, erase. Bootloader should be read-only.",
+    "step_6": "Save this file with a descriptive name e.g. my_esp32_device.json, then import it."
+  },
+
+  "_template_marker": true,
+
+  "device": {
+    "id": "my_esp32_device",
+    "name": "My ESP32 Device",
+    "description": "Optional description of your device",
+    "chip_model": "ESP32-D0WD-V3",
+    "flash_size": 16777216
+  },
+
+  "regions": [
+    {
+      "id": "bootloader",
+      "name": "Bootloader",
+      "address": "0x1000",
+      "size": 28672,
+      "operations": ["read"],
+      "description": "ESP32 second-stage bootloader. Read only — writing here can brick the device."
+    },
+    {
+      "id": "app0",
+      "name": "Firmware",
+      "address": "0x10000",
+      "size": 2097152,
+      "operations": ["read", "write", "erase"],
+      "description": "Main application firmware."
+    },
+    {
+      "id": "spiffs",
+      "name": "SPIFFS",
+      "address": "0x210000",
+      "size": 1048576,
+      "operations": ["read", "write", "erase"],
+      "description": "SPIFFS filesystem partition."
+    }
+  ]
+}

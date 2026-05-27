@@ -1,0 +1,51 @@
+{
+  "device": {
+    "id": "sparkfun_thing_plus_esp32",
+    "name": "SparkFun Thing Plus ESP32 WROOM",
+    "description": "SparkFun Thing Plus ESP32 WROOM development board with 16 MB flash.",
+    "chip_model": "ESP32-D0WD-V3",
+    "flash_size": 16777216
+  },
+  "regions": [
+    {
+      "id": "bootloader",
+      "name": "Bootloader",
+      "address": "0x1000",
+      "size": 28672,
+      "operations": ["read"],
+      "description": "Second-stage bootloader"
+    },
+    {
+      "id": "partition_table",
+      "name": "Partition table",
+      "address": "0x8000",
+      "size": 4096,
+      "operations": ["read"],
+      "description": "Flash partition table"
+    },
+    {
+      "id": "firmware",
+      "name": "Firmware (app0)",
+      "address": "0x10000",
+      "size": 2097152,
+      "operations": ["read", "write", "erase"],
+      "description": "Main application firmware"
+    },
+    {
+      "id": "spiffs",
+      "name": "SPIFFS",
+      "address": "0x210000",
+      "size": 2064384,
+      "operations": ["read", "write", "erase"],
+      "description": "General file storage"
+    },
+    {
+      "id": "samples",
+      "name": "Samples",
+      "address": "0x400000",
+      "size": 8388608,
+      "operations": ["read", "write", "erase"],
+      "description": "Sample data storage — matches T-APE memory map"
+    }
+  ]
+}
