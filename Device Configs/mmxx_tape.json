@@ -1,0 +1,99 @@
+{
+  "device": {
+    "id": "mmxx_tape",
+    "name": "Phonicbloom MMXX T-APE",
+    "description": "Phonicbloom MMXX T-APE bytebeat synthesiser. ESP32-PICO-D4, 16 MB flash.",
+    "chip_model": "ESP32-PICO-D4",
+    "flash_size": 16777216
+  },
+  "regions": [
+    {
+      "id": "bootloader",
+      "name": "Bootloader",
+      "address": "0x1000",
+      "size": 28672,
+      "operations": ["read"],
+      "description": "Starts up the chip and hands control to the firmware. Do not modify this region."
+    },
+    {
+      "id": "partition_table",
+      "name": "Partition Table",
+      "address": "0x8000",
+      "size": 4096,
+      "operations": ["read"],
+      "description": "Maps where everything lives in flash memory. Do not modify this region."
+    },
+    {
+      "id": "nvs_boot",
+      "name": "NVS Boot Storage",
+      "address": "0x9000",
+      "size": 81920,
+      "operations": ["read"],
+      "description": "Internal storage used by the chip at startup. Read only."
+    },
+    {
+      "id": "ota_data",
+      "name": "OTA Data",
+      "address": "0x1D000",
+      "size": 8192,
+      "operations": ["read"],
+      "description": "Stores which firmware slot the device boots from. Not used by the T-APE. Read only."
+    },
+    {
+      "id": "phy_init",
+      "name": "Radio Calibration",
+      "address": "0x1F000",
+      "size": 4096,
+      "operations": ["read"],
+      "description": "Radio calibration data unique to this chip. Written at the factory. Read only."
+    },
+    {
+      "id": "device_config",
+      "name": "Device Config",
+      "address": "0x20000",
+      "size": 65536,
+      "operations": ["read"],
+      "description": "Internal device configuration storage. Read only."
+    },
+    {
+      "id": "patches",
+      "name": "Patches (User Saved Sounds)",
+      "address": "0x30000",
+      "size": 425984,
+      "operations": ["read", "write"],
+      "description": "User Patches: 64 patches saved across 8 banks of 8 patches each. Download to back up. Upload to restore."
+    },
+    {
+      "id": "patch_defaults",
+      "name": "Factory Patch Defaults",
+      "address": "0x98000",
+      "size": 425984,
+      "operations": ["read"],
+      "description": "Factory patches pre-loaded at manufacture. Download to restore factory sounds. Read only."
+    },
+    {
+      "id": "firmware",
+      "name": "Firmware",
+      "address": "0x100000",
+      "size": 1048576,
+      "operations": ["read", "write"],
+      "description": "The T-APE operating software. Download to back up before updating. Upload to update."
+    },
+    {
+      "id": "samples_factory",
+      "name": "Factory Samples",
+      "address": "0x200000",
+      "size": 1048576,
+      "operations": ["read"],
+      "description": "The 8 original audio samples. Download to back up or extract. Read only."
+    },
+    {
+      "id": "samples_user",
+      "name": "User Samples",
+      "address": "0x300000",
+      "size": 1048576,
+      "operations": ["read", "write"],
+      "description": "Reserved for custom samples. Upload user samples here."
+    }
+  ]
+}
