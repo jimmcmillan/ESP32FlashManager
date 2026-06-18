@@ -65,7 +65,7 @@ The MMXX T-APE is a bytebeat synthesiser made by Phonicbloom. This config gives 
 | OTA Data | 0x01D000 | 8 KB | Read |
 | Radio Calibration | 0x01F000 | 4 KB | Read |
 | Device Config | 0x020000 | 64 KB | Read |
-| **Patches** (User Saved Sounds) | 0x030000 | 416 KB | Read, Write |
+| **Patches** (User Saved Patches) | 0x030000 | 416 KB | Read, Write |
 | Factory Patch Defaults | 0x098000 | 416 KB | Read |
 | **Firmware** | 0x100000 | 1 MB | Read, Write |
 | Factory Samples | 0x200000 | 1 MB | Read |
